@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Assistir Vídeos</title>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <!-- Style Documents -->
+    <link rel="stylesheet" href="assets/css/general.css">
+
+</head>
+
+<body>
+    <main>
+
+        <section class="video-display-area" id="video-display-area">
+            <h3>VÍDEO PREVIEW</h3>
+
+            <div class="videos" id="videos"></div>
+
+            <div class="btn-open-creation-area" id="btn-open-creation-area">
+                <button type="button">
+                    <i class="fas fa-plus-circle"></i>
+                    ADICIONAR NOVO VÍDEO
+                    <span></span>
+                </button>
+            </div>
+        </section>
+
+        <div class="trash-container">
+            <img src="assets/icons/trash-closed.svg" class="trash-dropzone" id="trash-dropzone">
+            <div class="screen-del-item" id="screen-del-item"><h2>Vídeo Excluido com sucesso</h2></div>
+        </div>
+
+    </main>
+
+    <div class="video-creation-place" id="video-creation-place">
+        <div class="container">
+
+            <h1>Adicionar um novo Vídeo no Preview</h1>
+
+            <form action="" method="post" id="video-creation-form">
+
+                <div class="block-input">
+                    <input type="text" class="input-data" name="title_video" placeholder="Titulo do vídeo do YouTube"
+                        maxlength="40">
+                    <input type="text" class="input-data" name="name_channel" placeholder="Nome do Canal do YouTube">
+                </div>
+
+                <div class="block-input">
+                    <input type="number" class="input-data" name="duration_video"
+                        placeholder="Duração total do vídeo em segundos">
+                    <input type="text" class="input-data" name="video_id" placeholder="ID do vídeo do YouTube">
+
+                </div>
+
+                <div class="block-input">
+                    <button type="button" class="button-cancel" id="button-cancel">Cancelar Criação</button>
+                    <button type="submit" class="submit-create" id="submit-create">Criar Preview</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay">
+        <div class="header-model">
+            <div class="data-video">
+                <h2>Bumbum Granada - MCs Zaac e Jerry (KondZilla) | Official Music Video</h2>
+                <p>CeSkBlue</p>
+            </div>
+            <i class="fas fa-times"></i>
+        </div>
+
+        <!-- <iframe
+        src="https://www.youtube.com/embed/EWcOY14GWwM?fs=0&rel=0&autoplay=1&start=0"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe> -->
+    </div>
+
+
+    <!-- Javascript Documents -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

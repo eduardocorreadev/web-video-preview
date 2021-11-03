@@ -1,0 +1,327 @@
+/* ============= */
+/* Google Fonts */
+/* =========== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* ==================== */
+/* General Definitions */
+/* ================== */
+* {
+    margin: 0; padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+html, body {
+    height: 100vh;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-weight: normal;
+    background: var(--Background);
+}
+
+a {
+    color: var(--Foreground);
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+:root {
+/* ========================== */
+/* Color Palette Definitions - Dracula Theme */
+/* ======================== */
+    --Background:#282a36;
+    --CurrentLine:#44475a;
+    --Selection: #44475a;
+    --Foreground:#f8f8f2;
+    --Comment:	#6272a4;
+    --Cyan:	#8be9fd;
+    --Green:#50fa7b;
+    --Orange:#ffb86c;
+    --Pink:	#ff79c6;
+    --Purple: #bd93f9;
+    --Red: #ff5555;
+    --Yellow: #f1fa8c;
+
+/* ========== */
+/* Variables */
+/* ======== */
+
+    /* Fonts weight */
+    --fontRegular: 400;
+    --fontMedium: 500;
+    --fontBold: 700;
+
+}
+
+/* ===================== */
+/* Reusable Definitions */
+/* =================== */
+
+/* =============== */
+/* Other settings */
+/* ============= */
+section.video-display-area {
+    width: 95%; max-width: 1300px; height: 100%;
+    margin: 30px auto 0 auto;
+    padding-bottom: 50px;
+}
+
+section.video-display-area .videos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 10px;
+}
+
+section.video-display-area h3 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: var(--fontBold);
+    color: var(--Foreground);
+    border-bottom: 1px solid #44475a;
+    padding-bottom: 10px;
+}
+
+section.video-display-area .videos .video-item {
+    max-width: 400px;
+    position: relative;
+    margin: 10px;
+    background: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+section.video-display-area .videos .video-item:hover {
+    transform: translateY(-7px);
+}
+
+section.video-display-area .videos .video-item .screen {
+    width: 100%; height: 200px;
+}
+
+section.video-display-area .videos .video-item .screen .video-block-action {
+    position: absolute; left: 0; top: 0; z-index: 2;
+    width: 100%; height: 100%;
+}
+
+section.video-display-area .videos .video-item .screen iframe {
+    position: absolute; left: 0; top: 0; z-index: 1;
+    width: 100%; height: 200px;
+    z-index: 1;
+}
+
+section.video-display-area .videos .video-item .screen .timer-video-preview {
+    position: relative; top: 200px;
+    width: 0; height: 5px; 
+    background: var(--Red); 
+}
+
+section.video-display-area .videos .video-item .screen .timer-video-preview.on {
+    animation: timerPreview 30s ease 2s;
+}
+
+section.video-display-area .videos .video-item .info-video {
+    background: var(--CurrentLine);
+    padding: 10px;
+}
+
+section.video-display-area .videos .video-item .info-video h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: var(--fontRegular);
+    text-align: left;
+}
+
+section.video-display-area .videos .video-item .info-video span {
+    color: #fff;
+    font-weight: var(--fontBold);
+}
+
+section.video-display-area .videos .video-item .info-video p {
+    color: #a5a5a5;
+}
+
+section.video-display-area .btn-open-creation-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+section.video-display-area .btn-open-creation-area button {
+    width: 250px; height: 45px;
+    color: #fff;
+    background: transparent;
+    border: 2px solid var(--Red);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+section.video-display-area .btn-open-creation-area button:hover {
+    background: var(--Red);
+}
+
+
+
+/* Trash Container */
+.trash-container img {
+    position: fixed; bottom: 5%; left: 50%; z-index: 2;
+    transform: translate(-50%);
+    width: 80px;
+    display: none;
+}
+
+.trash-container .screen-del-item {
+    display: flex; align-items: center; flex-direction: column; justify-content: center;
+}
+
+.trash-container .screen-del-item h2 {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: var(--fontBold);
+    text-transform: uppercase;
+    display: none;
+} 
+
+.trash-container .screen-del-item.on-screen-del {
+    position: fixed; left: 0; bottom: 0; z-index: 2;
+    width: 100%; height: 100%;
+    background: var(--Red);
+    animation: slide-top 0.7s ease forwards 2 alternate;
+}
+
+.trash-container .screen-del-item.on-screen-del h2 {
+    display: block;
+}
+
+
+
+
+
+
+
+/* Create Video */
+.video-creation-place {
+    width: 100%;
+    display: none;
+}
+
+.video-creation-place .container {
+    display: flex; align-items: center; flex-direction: column;
+}
+
+.video-creation-place .container h1 {
+    color: var(--Comment);
+    font-size: 3rem; font-weight: var(--fontBold);
+    margin: 20px 0;
+}
+
+.video-creation-place .container form input,
+.video-creation-place .container form button {
+    width: 300px; height: 40px;
+    color: #fff;
+    background: var(--CurrentLine);
+    border: none;
+    padding: 0 7px;
+    margin: 5px 3px;
+}
+
+.video-creation-place .container form input::placeholder {
+    color: #cacaca;
+}
+
+.video-creation-place .container form input.button-create {
+    background: var(--Green);
+    cursor: pointer;
+}
+
+.video-creation-place .container form input.on-error {
+    color: var(--Red);
+    border-bottom: 2px solid var(--Red);
+}
+
+.video-creation-place .container form button {
+    cursor: pointer;
+}
+
+.video-creation-place .container form button:nth-child(1) {
+    background: var(--Red);
+}
+
+.video-creation-place .container form button:nth-child(2) {
+    background: var(--Comment);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: absolute; left: 0; top: 0; z-index: 4;
+    width: 100%; height: 100vh;
+    background: var(--Background);
+    display: none;
+}
+
+.modal-overlay .header-model {
+    width: 100%;
+    background: var(--CurrentLine);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.modal-overlay .header-model i {
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-overlay .header-model .data-video h2 {
+    margin-right: 10px;
+}
+
+.modal-overlay .header-model .data-video p {
+    color: #a5a5a5;
+}
+
+.modal-overlay .header-model {
+    color: #fff;
+}
+
+.modal-overlay iframe {
+    width: 100%; height: 94vh;
+}
+
+
+
+/* ================ */
+/* Main Animations */
+/* ============== */
+@keyframes timerPreview { /* Progress Bar Animation */
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+
+@keyframes slide-top { /* Animation of video screen successfully deleted */
+    from {
+          transform: translateY(100%);
+          border-radius: 100%;
+          
+    }
+    to {
+          transform: translateY(0);
+          border-radius: 0;
+    }
+  }
+  
