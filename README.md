@@ -169,9 +169,7 @@ iframeElement.addEventListener('mouseleave', () => {
 
 ```
 
-<p>Tudo perfeito! Chegamos ao final do código. Esse é um simples exemplo de como desenvolver o Video Preview e este exemplo não é 100% do que foi feito no projeto oficial.</p>
-
-<br />
+<p>Tudo perfeito! Chegamos ao final do código. Esse é um simples exemplo de como desenvolver fiel ao que foi feito no projeto real do repositório.</p>
 
 ### Teste você mesmo...
 <a href="https://codepen.io/ucarlos1001/pen/vYJpmRL" target="_blank">Exemplo no Codepen</a>
