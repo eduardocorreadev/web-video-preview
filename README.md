@@ -1,7 +1,6 @@
 
 #
 ### Video Preview na Web com vídeos do Youtube.
-
 #
 
 ### O que é um Video Preview?
@@ -169,7 +168,7 @@ iframeElement.addEventListener('mouseleave', () => {
 
 ```
 
-<p>Tudo perfeito! Chegamos ao final do código. Esse é um simples exemplo de como desenvolver fiel ao que foi feito no projeto real do repositório.</p>
+<p>Tudo pronto! Chegamos ao final do código. Este foi um simples exemplo de como desenvolver um Video Preview na Web usando JavaScript Puro. Lembrando que este exemplo não é 100% fiel ao projeto do repositório.</p>
 
 ### Teste você mesmo...
 <a href="https://codepen.io/ucarlos1001/pen/vYJpmRL" target="_blank">Exemplo no Codepen</a>
