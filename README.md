@@ -1,3 +1,5 @@
+
+#
 ### Um projeto de um Video Preview na Web com vídeos do Youtube.
 
 #
@@ -22,7 +24,7 @@
 ### Como será utilizado o iframe nesse projeto?
 <p>Nesse projeto, como foi dito, iremos utilizar vídeos do Youtube, e sorte a nossa que o Youtube tem seu próprio gerador de iframe com já quase tudo configurado. Para utilizar essa ferramenta do Youtube é bem simples... </p>
 
-<img src="gifs/gerando-iframe-youtube.gif" width=400>
+<img src="gifs/gerando-iframe-youtube.gif" width=500>
 
 <br />
 <br />
