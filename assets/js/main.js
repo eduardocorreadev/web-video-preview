@@ -8,19 +8,19 @@ let videoDisplayArea = document.getElementById('video-display-area') // Getting 
 let videoCreationPlace = document.getElementById('video-creation-place') // Getting creation area
 
 // Open video creation area
-document.querySelector('#btn-open-creation-area button').addEventListener('click', () => { 
+document.querySelector('#btn-open-creation-area button').addEventListener('click', () => {
     videoDisplayArea.style.display = 'none'
     videoCreationPlace.style.display = 'block'
 })
 
 // Close video creation area
-document.getElementById('button-cancel').addEventListener('click', () => { 
+document.getElementById('button-cancel').addEventListener('click', () => {
     videoDisplayArea.style.display = 'block'
     videoCreationPlace.style.display = 'none'
 })
 
 // Button that will get all form items, validate and add a new video to the preview
-document.getElementById('submit-create').addEventListener('click', event => { 
+document.getElementById('submit-create').addEventListener('click', event => {
     event.preventDefault()
 
     let videoCreationForm = document.getElementById('video-creation-form') // Getting video creation form for the preview
@@ -37,12 +37,12 @@ document.getElementById('submit-create').addEventListener('click', event => {
         if (nameChannel == '') nameChannel = 'Não informado!' // The channel name is not required, so if not filled in, a default value will be added
 
         // Trying to get the item: 'list-videos' present inside the localStorage, if it doesn't find it means it doesn't exist, so it takes an empty array. (JSON)
-        let listVideos = JSON.parse(localStorage.getItem('list-videos') || '[]') 
+        let addVideoList = JSON.parse(localStorage.getItem('list-videos') || '[]')
 
         // With the Array, whether it is empty or not, it will push with the data received in the form.
-        listVideos.push({titleVideo, nameChannel, durationVideo, startVideo, videoId})
+        addVideoList.push({ titleVideo, nameChannel, durationVideo, startVideo, videoId })
 
-        localStorage.setItem('list-videos', JSON.stringify(listVideos)) // Adding a array in localStorage named: list-videos
+        localStorage.setItem('list-videos', JSON.stringify(addVideoList)) // Adding a array in localStorage named: list-videos
 
     } else {
         // VALIDAR ERROS DOS INPUTS DEPOIS
@@ -58,10 +58,11 @@ let videosRender = JSON.parse(localStorage.getItem('list-videos')) // Getting al
 let localVideos = document.getElementById('videos') // Element where all videos are displayed
 
 // Get each element from 'videoRender' and add in 'video'
-videosRender.map(video => { 
+videosRender.map(video => {
     let addVideo = `
         <div class="video-item" draggable="true">
             <div class="screen">
+                <div class="video-id" style="display: none;">${video.videoId}</div>
                 <div class="video-block-action"></div>
                     <iframe
                         src="https://www.youtube.com/embed/${video.videoId}?controls=0&disablekb=1&fs=0&rel=0&start=${video.startVideo}"
@@ -82,9 +83,9 @@ videosRender.map(video => {
 })
 
 
-/* ================================================*/ 
-/* Preview and delete videos with 'drag and drop' */ 
-/* ============================================= */ 
+/* ================================================*/
+/* Preview and delete videos with 'drag and drop' */
+/* ============================================= */
 const cards = document.querySelectorAll('div.video-item') // Getting all videos with class 'video-item'
 
 // Counting and displayed on the button the amount of 'video-item' found.
@@ -133,13 +134,13 @@ cards.forEach(card => {
 
     /* If the browser tab has been changed while Preview is active, it will remove everything with the 'removePreview()' function */
     window.addEventListener('blur', removePreview)
-    
+
 
     /* ===================================================================================*/
     /* Using the same 'cards', the 'DRAG and DROP' will be created to delete the videos. */
-    /* ================================================================================ */ 
+    /* ================================================================================ */
     const dropzoneElement = document.getElementById('trash-dropzone') // Element where the video will be dropped
-    const screenDelItem = document.getElementById('screen-del-item') // Screen of animation of video successfully deleted
+    const screenDelItem = document.getElementById('screen-del-item') // Screen of animation of video successfully deleted 
 
     /* When the drag starts, this function will be called.
     It will add a class named: 'is-dragging' which will be used
@@ -181,15 +182,27 @@ cards.forEach(card => {
         event.preventDefault()
 
         if (event.target.className == dropzoneElement.className) {
-            document.querySelector('.is-dragging').style.display = 'none'
+            let isDragging = document.querySelector('.is-dragging')
+            let videoID = isDragging.querySelector('.video-id').textContent
+
+            isDragging.style.display = 'none'
             screenDelItem.classList.add('on-screen-del')
 
             screenDelItem.addEventListener('animationend', event => {
                 if (event.animationName === 'slide-top') {
                     screenDelItem.classList.remove('on-screen-del')
+ 
+                    let getListVideo = JSON.parse(localStorage.getItem('list-videos'))
 
-                    // CONTINUE...
+                    for (let prop in getListVideo) {
+                        if (getListVideo[prop].videoId === videoID) {
+                            getListVideo.splice(prop, 1)
                     
+                            localStorage.setItem('list-videos', JSON.stringify(getListVideo))
+                            break
+                        }
+                    }
+
                 }
             })
         }
@@ -197,3 +210,5 @@ cards.forEach(card => {
 
 })
 
+
+// [{"titleVideo":"blackbear - idfc","nameChannel":"sydster","durationVideo":"259","startVideo":115,"videoId":"kjiJf6xgzNk"},{"titleVideo":"Unstoppable","nameChannel":"Sia","durationVideo":"220","startVideo":52,"videoId":"kWMDkkUT_xY"},{"titleVideo":"BEAT MINHȺ GALEGȺ","nameChannel":"Sr. Nescau","durationVideo":"172","startVideo":24,"videoId":"4CgbHWQ3U_o"}]
