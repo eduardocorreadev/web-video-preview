@@ -4,14 +4,14 @@
 #
 
 ### O que é um Video Preview?
-<p>Video Preview é a pré visualização do conteúdo, nesse caso um vídeo do Youtube. A pré visualização te possibilita visulizar um trecho do vídeo antes de abrir o vídeo em si. Você talvez já tenha visto diversas vezes este sistema em ação, um exemplo de Video Preview é no próprio Youtube, mas existe outras plataformas que utilizam. Sendo elas:</p>
+<p>A pré visualização, ou Preview te possibilita visulizar um trecho, por exemplo, de um vídeo antes de abrir o vídeo em si. Você talvez já tenha visto diversas vezes este sistema em ação. Um exemplo de Video Preview é no próprio Youtube, mas existe outras plataformas famosas que utilizam este recurso. Como:</p>
 
 <ul>
     <li>Netflix</li>
     <li>Tiktok</li>
 </ul>
 
-<p>Nesse projeto foi utilizados vídeos do próprio Youtube, e para isso foi preciso utilizar o famoso iframe.</p>
+<p>Nesse projeto foram utilizados vídeos do próprio Youtube, e para isso foi preciso utilizar o famoso iframe.</p>
 
 #
 
@@ -39,7 +39,7 @@ allow="autoplay;">
 </iframe> 
 ```
 
-<p>Nesse projeto os seguidores parâmetros foram utilizados na url:</p>
+<p>Nesse projeto os seguintes parâmetros foram utilizados na url:</p>
 
 - ``controls=0`` - Remover os controles do vídeo;
 - ``disablekb=1`` - Desativar a interação com vídeo pelo o teclado;
@@ -90,7 +90,7 @@ let timer30s; // Por enquanto vazia mesmo.
 ```
 
 
-<p>A ideia de um Preview é quando passar o mouse sobre o vídeo o mesmo iniciar. Então para isso será utilizado o evento "mouseenter", para quando o mouse entrar na box do vídeo. <a href="https://developer.mozilla.org/pt-BR/docs/Web/Events" target="_blank">Veja mas eventos</a></p> 
+<p>A ideia de um Preview é quando passar o mouse sobre o vídeo o mesmo iniciar. Então para isso será utilizado o evento "mouseenter", para quando o mouse entrar na box do vídeo. <a href="https://developer.mozilla.org/pt-BR/docs/Web/Events" target="_blank">Veja mais eventos</a></p> 
 
 
 ```JS
@@ -99,18 +99,17 @@ iframeElement.addEventListener('mouseenter', () => {
 })
 ```
 
-<p>Então, quando o usuário entrar com o mouse na box do vídeo, será verificado se não existe nada no index "5" da url, se não existir será adiconado o parâmetro: "&autoplay=1"...</p>
+<p>Então, quando o usuário entrar com o mouse na box do vídeo, será verificado se não existe nada no index "5" da url, se não existir será adiconado o parâmetro: "&autoplay=1".. O motivo do index 5 é pelo simples fato dele ser o quinto parâmetro na url. </p>
 
 ```JS
 if (!iframeElement.src.split('&')[5]) {...}
 ```
-<p>O motivo do index 5 é pelo simples fato dele ser o quinto parâmetro na url. 
-Depois de verificar e retornar que não existe o parâmetro, vamos fazer a adição do mesmo.</p>
+<p>Depois de verificar e retornar que não existe o parâmetro, vamos fazer a adição do mesmo.</p>
 
 ```JS
 iframeElement.src = iframeElement.src + '&autoplay=1'
 ```
-<p>Depois de adicionado e já podendo iniciar o vídeo com o passar do mouse, precisamos dizer que enquanto o mouse estiver dentro da box do vídeo, o vídeo rode por 30s. Para isso iremos pegar aquela variável criada lá no início. Lembra dela? Ótimo! Ela será utilizada para adicionar um "setTimeout()" de 30s... </p>
+<p>Depois de adicionado e já podendo iniciar o vídeo com o passar do mouse, precisamos dizer que enquanto o mouse estiver dentro da box, o vídeo rode por 30s. Para isso iremos pegar aquela variável criada lá no início. Lembra dela? Ótimo! Ela será utilizada para adicionar um "setTimeout()" de 30s... </p>
 
 ```JS
 if (!iframeElement.src.split('&')[5]) {
@@ -122,13 +121,13 @@ if (!iframeElement.src.split('&')[5]) {
 }   
 ```
 
-<p>Quando acabar os longos 30s, vamos remover o "&autoplay=1" da url pra parar o vídeo. Para mim, a forma mais fácil de fazer isso é reescrevendo o src com aquela variável criada para salvar o estado inicial do "iframeElement.src". Então para isso...</p>
+<p>Quando acabar os longos 30s, vamos remover o "&autoplay=1" da url para parar o vídeo. Para mim, a forma mais fácil de fazer isso é reescrevendo o src com aquela variável criada para salvar o estado inicial do "iframeElement.src". Então para isso...</p>
 
 ```JS
 iframeElement.src = saveValueIframe
 ```
 
-<p>Certo! Está tudo perfeito, mas como parar o vídeo? Simples! Vamos adicionar um evento chamado de: "mouseleave", que será chamado quando o mouse sair da box do vídeo.</p>
+<p>Certo! Está tudo perfeito, mas como parar o vídeo quando o mouse sair da box? Simples! Vamos adicionar um novo evento chamado de: "mouseleave", que será chamado quando o mouse sair da box do vídeo.</p>
 
 ```JS
 iframeElement.addEventListener('mouseleave', () => {
@@ -136,7 +135,7 @@ iframeElement.addEventListener('mouseleave', () => {
 })
 ```
 
-<p>Perfeito! Agora vamos retornar a url para o estado inicial e remover o setTimeout(). Para isso...</p>
+<p>Perfeito! Agora vamos retornar a url para o estado inicial e remover o setTimeout()...</p>
 
 ```JS
 iframeElement.src = saveValueIframe
@@ -168,7 +167,7 @@ iframeElement.addEventListener('mouseleave', () => {
 
 ```
 
-<p>Tudo pronto! Chegamos ao final do código. Este foi um simples exemplo de como desenvolver um Video Preview na Web usando JavaScript Puro. Lembrando que este exemplo não é 100% fiel ao projeto do repositório.</p>
+<p>Tudo pronto! Chegamos ao final do código. Este foi um simples exemplo de como desenvolver um Video Preview usando JavaScript Puro. Lembrando que este exemplo não é 100% fiel ao projeto do repositório.</p>
 
 ### Teste você mesmo...
 <a href="https://codepen.io/ucarlos1001/pen/vYJpmRL" target="_blank">Exemplo no Codepen</a>
