@@ -44,9 +44,11 @@ document.getElementById('submit-create').addEventListener('click', event => {
 
         localStorage.setItem('list-videos', JSON.stringify(addVideoList)) // Adding a array in localStorage named: list-videos
 
+        alert("Vídeo Adicionado com Sucesso!")
+        document.location.reload(true)
+
     } else {
-        // VALIDAR ERROS DOS INPUTS DEPOIS
-        console.log('Falha!')
+        alert("Os campos são obrigatórios!")
     }
 
 })
@@ -209,6 +211,3 @@ cards.forEach(card => {
     })
 
 })
-
-
-// [{"titleVideo":"blackbear - idfc","nameChannel":"sydster","durationVideo":"259","startVideo":115,"videoId":"kjiJf6xgzNk"},{"titleVideo":"Unstoppable","nameChannel":"Sia","durationVideo":"220","startVideo":52,"videoId":"kWMDkkUT_xY"},{"titleVideo":"BEAT MINHȺ GALEGȺ","nameChannel":"Sr. Nescau","durationVideo":"172","startVideo":24,"videoId":"4CgbHWQ3U_o"}]

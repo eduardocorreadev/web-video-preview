@@ -71,15 +71,17 @@ ul li {
 /* Other settings */
 /* ============= */
 section.video-display-area {
-    width: 95%; max-width: 1300px; height: 100%;
+    width: 95%; 
+    max-width: 1300px; 
+    height: 100%;
     margin: 30px auto 0 auto;
     padding-bottom: 50px;
 }
 
 section.video-display-area .videos {
-    width: 100%;
+    /* width: 100%; */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
 }
 
@@ -93,6 +95,7 @@ section.video-display-area h3 {
 }
 
 section.video-display-area .videos .video-item {
+    width: 95%;
     max-width: 400px;
     position: relative;
     margin: 10px;
@@ -171,7 +174,6 @@ section.video-display-area .btn-open-creation-area button:hover {
 }
 
 
-
 /* Trash Container */
 .trash-container img {
     position: fixed; bottom: 5%; left: 50%; z-index: 2;
@@ -202,11 +204,6 @@ section.video-display-area .btn-open-creation-area button:hover {
 .trash-container .screen-del-item.on-screen-del h2 {
     display: block;
 }
-
-
-
-
-
 
 
 /* Create Video */
@@ -260,6 +257,7 @@ section.video-display-area .btn-open-creation-area button:hover {
 .video-creation-place .container form button:nth-child(2) {
     background: var(--Comment);
 }
+
 
 /* Modal Overlay */
 .modal-overlay {
@@ -325,3 +323,20 @@ section.video-display-area .btn-open-creation-area button:hover {
     }
   }
   
+
+/* Responsive */
+@media (max-width: 1100px) {
+    section.video-display-area .videos {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    section.video-display-area .videos {
+        grid-template-columns: 1fr;
+    }
+
+    section.video-display-area .videos .video-item {
+        max-width: 100%;
+    }
+}
